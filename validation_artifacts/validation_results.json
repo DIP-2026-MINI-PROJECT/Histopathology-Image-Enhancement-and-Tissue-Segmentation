@@ -1,0 +1,90 @@
+{
+  "validation_scope": "Independent mathematical checks on synthetic H&E-like image; descriptive run on bundled unannotated IHC image.",
+  "synthetic_seed": 20261102,
+  "synthetic_shape": [
+    384,
+    512,
+    3
+  ],
+  "synthetic_ground_truth_is_programmatic_only": true,
+  "real_sample": "scikit-image bundled immunohistochemistry sample (DAB/IHC; no labels)",
+  "synthetic_metrics": {
+    "synthetic_pixel_dice": 0.9994754939099015,
+    "synthetic_pixel_iou": 0.9989515377446412,
+    "synthetic_pixel_precision": 1.0,
+    "synthetic_pixel_recall": 0.9989515377446412,
+    "synthetic_ground_truth_nuclei_count": 20,
+    "synthetic_watershed_region_count": 20,
+    "synthetic_true_positive_pixels": 8575,
+    "synthetic_false_positive_pixels": 0,
+    "synthetic_false_negative_pixels": 9,
+    "hsv_saturation_max_abs_error": 0.0,
+    "synthetic_tissue_dice": 0.9999170984455958,
+    "synthetic_tissue_iou": 0.9998342106353877,
+    "synthetic_tissue_false_positive_pixels": 16,
+    "synthetic_tissue_false_negative_pixels": 0,
+    "synthetic_truth_nuclei_without_any_predicted_label": 0,
+    "synthetic_truth_nuclei_spanning_multiple_predicted_labels": 4,
+    "synthetic_predicted_labels_overlapping_multiple_truth_nuclei": 4
+  },
+  "performance": [
+    {
+      "size": "256x256",
+      "total_ms": 150.98,
+      "stage_ms": {
+        "grayscale_ms": 0.16,
+        "enhancement_ms": 2.22,
+        "spatial_filters_ms": 0.17,
+        "edge_operators_ms": 9.68,
+        "dft_and_filter_ms": 9.77,
+        "tissue_segmentation_ms": 31.84,
+        "hed_threshold_watershed_regions_ms": 83.63
+      },
+      "baseline_working_set_mb": 167.72,
+      "peak_working_set_mb_sampled": 192.45,
+      "peak_working_set_delta_mb_sampled": 24.73,
+      "retained_pipeline_array_mb": 4.62
+    },
+    {
+      "size": "512x512",
+      "total_ms": 553.59,
+      "stage_ms": {
+        "grayscale_ms": 0.19,
+        "enhancement_ms": 8.04,
+        "spatial_filters_ms": 0.62,
+        "edge_operators_ms": 38.98,
+        "dft_and_filter_ms": 46.12,
+        "tissue_segmentation_ms": 130.96,
+        "hed_threshold_watershed_regions_ms": 264.6
+      },
+      "baseline_working_set_mb": 173.52,
+      "peak_working_set_mb_sampled": 279.5,
+      "peak_working_set_delta_mb_sampled": 105.98,
+      "retained_pipeline_array_mb": 18.5
+    },
+    {
+      "size": "1024x1024",
+      "total_ms": 2443.66,
+      "stage_ms": {
+        "grayscale_ms": 0.45,
+        "enhancement_ms": 27.03,
+        "spatial_filters_ms": 1.12,
+        "edge_operators_ms": 161.63,
+        "dft_and_filter_ms": 223.65,
+        "tissue_segmentation_ms": 587.49,
+        "hed_threshold_watershed_regions_ms": 1157.24
+      },
+      "baseline_working_set_mb": 194.97,
+      "peak_working_set_mb_sampled": 647.17,
+      "peak_working_set_delta_mb_sampled": 452.2,
+      "retained_pipeline_array_mb": 74.0
+    }
+  ],
+  "notes": [
+    "Synthetic binary metrics compare the union of predicted watershed labels with the generated nucleus-pixel mask only.",
+    "The generated mask includes known touching and overlapping nuclei; object-level matching is not performed.",
+    "No ground-truth segmentation metrics are reported for the bundled IHC sample.",
+    "Peak working-set deltas are sampled every 5 ms and can miss short-lived peaks.",
+    "Retained pipeline array size is a byte sum, not total process memory."
+  ]
+}
